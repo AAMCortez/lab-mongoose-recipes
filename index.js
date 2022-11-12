@@ -33,6 +33,10 @@ const manageRecipes = async () => {
       const addDataRecipe = await Recipe.insertMany(data);
       const allRecipes = await Recipe.find({}, { title: 1, _id: 0 });
       console.log("Data added:", allRecipes);
+      // or this way
+      addDataRecipe.forEach(recipe => {
+         console.log('title ---> ', recipe.title)
+      })
 
       const updateRecipe = await Recipe.findOneAndUpdate(
          { title: "Rigatoni alla Genovese" },
